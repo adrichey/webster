@@ -14,7 +14,7 @@ sudo apt-get install -y apache2
 
 # Install PHP 7
 sudo apt-get -y install php7.0 libapache2-mod-php7.0
-sudo apt-get install -y php7.0-mysql php7.0-curl php7.0-json php7.0-cgi php7.0-gd php7.0-fpm php7.0-mcrypt php-imagick php7.0-bz2 php7.0-zip
+sudo apt-get install -y php7.0-mysql php7.0-curl php7.0-json php7.0-cgi php7.0-gd php7.0-mcrypt php-imagick php7.0-bz2 php7.0-zip
 
 # Remove MySQL if installed
 sudo service mysql stop
