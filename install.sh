@@ -47,7 +47,20 @@ sudo npm install npm@latest -g
 # Rewrite Apache sites
 sudo sed -i 's|/var/www/html|/var/www/web|g' /etc/apache2/sites-available/000-default.conf
 sudo sed -i 's|/var/www/html|/var/www/web|g' /etc/apache2/sites-available/default-ssl.conf
-sudo sed -i 's|/var/www/html|/var/www/web|g' /etc/apache2/sites-enabled/default-ssl.conf
+
+# Allow .htaccess redirects
+sudo touch /etc/apache2/conf-available/webster.conf
+sudo bash -c 'echo "<Directory /var/www/>" >> /etc/apache2/conf-available/webster.conf'
+sudo bash -c 'echo "    Options Indexes FollowSymLinks" >> /etc/apache2/conf-available/webster.conf'
+sudo bash -c 'echo "    AllowOverride All" >> /etc/apache2/conf-available/webster.conf'
+sudo bash -c 'echo "    Require all granted" >> /etc/apache2/conf-available/webster.conf'
+sudo bash -c 'echo "</Directory>" >> /etc/apache2/conf-available/webster.conf'
+
+# Enable rewrite mods for Apache
+sudo a2enmod rewrite
+
+# Enable Webster specific Apache configuration
+sudo a2enconf webster
 
 # Restart Apache
 sudo service apache2 restart
