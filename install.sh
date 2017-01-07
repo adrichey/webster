@@ -44,6 +44,9 @@ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install npm@latest -g
 
+# Install Gulp globally
+sudo npm install gulp -g
+
 # Rewrite Apache sites
 sudo sed -i 's|/var/www/html|/var/www/web|g' /etc/apache2/sites-available/000-default.conf
 sudo sed -i 's|/var/www/html|/var/www/web|g' /etc/apache2/sites-available/default-ssl.conf
